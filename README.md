@@ -1,7 +1,7 @@
 # Mostly-2D-Sketches
 
-Throwaway animated 2D/3D graphics for self-learning
-No Purpose
+Throwaway animated 2D/3D graphics for self-learning.
+No Purpose. https://www.youtube.com/playlist?list=PLMHXpX1YlHZkccVeKv8Yg-GeangzWS3JO
 
 ![blocks](/img/blocks.png)
 
