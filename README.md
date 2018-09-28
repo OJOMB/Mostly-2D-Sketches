@@ -1,6 +1,7 @@
 # Mostly-2D-Sketches
 
-Throwaway 2D/3D graphics for self-learning
+Throwaway animated 2D/3D graphics for self-learning
+No Purpose
 
 ![blocks](/img/blocks.png)
 
