@@ -10,6 +10,8 @@ Throwaway 2D/3D graphics for self-learning
 
 ![infinty_cube](/img/infinty_cube.png)
 
+![24_08_18](/img/24_08_18.png)
+
 ![whoknows](/img/whoknows.png)
 
 ![sinecircles](/img/sinecircles.png)
