@@ -4,6 +4,10 @@ Throwaway 2D/3D graphics for self-learning
 
 ![blocks](/img/blocks.png)
 
+![kool](/img/koolaidacidtest.png)
+
+![greens](/img/greengrid.png)
+
 ![cubeinacube](/img/cubeinacube.png)
 
 ![glitch_cube](/img/glitch_cube.png)
