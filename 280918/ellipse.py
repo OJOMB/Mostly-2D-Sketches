@@ -104,30 +104,31 @@ screen = pg.display.set_mode([width, height])
 
 listicle = [i for i in range(7,16)]
 reverse_listicle = [i for i in range(16,6,-1)]
-line_width = []
+line_space = []
 for i in listicle:
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
 for i in reverse_listicle:
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
-    line_width.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
+    line_space.append(i)
 
 grid_counter = 0
-grid_width = [50,100,200,400,800]
+grid_width = [10,20,30,40,50,100,200,400,800]
+line_width = [1,2,4,6,8,12,13,15,17]
 
 lines = True
 counter = 0
@@ -148,7 +149,7 @@ while True:
                                 pause = False
             if event.key == pg.K_RETURN:
                 grid_counter += 1
-                grid_counter %= 5
+                grid_counter %= len(grid_width)
             if event.key == pg.K_BACKSPACE:
                 p_counter += 1
                 p_counter %= len(palette)
@@ -162,22 +163,22 @@ while True:
     pg.draw.rect(screen, palette[p_counter][0], [0,0,1200,160])
 
     for i in range(0, 1401, 20):
-        pg.draw.line(screen, palette[p_counter][2], [i, 0], [i,200], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][2], [i, 0], [i,200], line_space[counter%len(line_space)])
     for i in range(0, 201, 20):
-        pg.draw.line(screen, palette[p_counter][2], [0, i], [width+10,i], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][2], [0, i], [width+10,i], line_space[counter%len(line_space)])
 
     if lines:
         for start_x in range (-4000 + counter % 1200,2401,grid_width[grid_counter]):
             start_pos = [start_x,0]
             end_x = 100 + start_x
             end_pos = [end_x, 200]
-            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, line_width[grid_counter])
             end_x = (200 + (1/3)*start_x)*3
             end_pos = [end_x, 200]
-            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, line_width[grid_counter])
             end_x = (-200 + (1/2)*start_x)*2
             end_pos = [end_x, 200]
-            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][1], start_pos, end_pos, line_width[grid_counter])
 
     #second section
     start_y = 160
@@ -187,9 +188,9 @@ while True:
     pg.draw.rect(screen, palette[p_counter][1], [0,160,1200,160])
 
     for i in range(0, 1401, 20):
-        pg.draw.line(screen, palette[p_counter][3], [i, start_y], [i,end_y], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][3], [i, start_y], [i,end_y], line_space[counter%len(line_space)])
     for i in range(start_y, end_y + 1, 20):
-        pg.draw.line(screen, palette[p_counter][3], [0, i], [width+10,i], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][3], [0, i], [width+10,i], line_space[counter%len(line_space)])
 
     if lines:
         for start_x in range (diplaced_start - counter % 1200,2401,grid_width[grid_counter]):
@@ -197,15 +198,15 @@ while True:
             c = start_y - (2*start_x)
             end_x = (end_y - c)/2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, line_width[grid_counter])
             c = start_y - ((1/3)*start_x)
             end_x = (end_y - c)*3
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, line_width[grid_counter])
             c = start_y + ((1/2)*start_x)
             end_x = (c - end_y)*2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][2], start_pos, end_pos, line_width[grid_counter])
 
     #third section
     start_y += 160
@@ -215,9 +216,9 @@ while True:
     pg.draw.rect(screen, palette[p_counter][2], [0,start_y,1200,160])
 
     for i in range(0, 1401, 20):
-        pg.draw.line(screen, palette[p_counter][4], [i, start_y], [i,end_y], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][4], [i, start_y], [i,end_y], line_space[counter%len(line_space)])
     for i in range(start_y, end_y + 1, 20):
-        pg.draw.line(screen, palette[p_counter][4], [0, i], [width+10,i], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][4], [0, i], [width+10,i], line_space[counter%len(line_space)])
 
     if lines:
         for start_x in range (diplaced_start + counter % 1200,2401,grid_width[grid_counter]):
@@ -225,15 +226,15 @@ while True:
             c = start_y - (2*start_x)
             end_x = (end_y - c)/2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, line_width[grid_counter])
             c = start_y - ((1/3)*start_x)
             end_x = (end_y - c)*3
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, line_width[grid_counter])
             c = start_y + ((1/2)*start_x)
             end_x = (c - end_y)*2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][3], start_pos, end_pos, line_width[grid_counter])
 
     #fourth section
     start_y += 160
@@ -243,9 +244,9 @@ while True:
     pg.draw.rect(screen, palette[p_counter][3], [0,start_y,1200,160])
 
     for i in range(0, 1401, 20):
-        pg.draw.line(screen, palette[p_counter][5], [i, start_y], [i,end_y], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][5], [i, start_y], [i,end_y], line_space[counter%len(line_space)])
     for i in range(start_y, end_y + 1, 20):
-        pg.draw.line(screen, palette[p_counter][5], [0, i], [width+10,i], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][5], [0, i], [width+10,i], line_space[counter%len(line_space)])
 
     if lines:   
         for start_x in range (diplaced_start - counter % 1200,2401,grid_width[grid_counter]):
@@ -253,15 +254,15 @@ while True:
             c = start_y - (2*start_x)
             end_x = (end_y - c)/2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, line_width[grid_counter])
             c = start_y - ((1/3)*start_x)
             end_x = (end_y - c)*3
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, line_width[grid_counter])
             c = start_y + ((1/2)*start_x)
             end_x = (c - end_y)*2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][4], start_pos, end_pos, line_width[grid_counter])
 
     #fifth section
     start_y += 160
@@ -271,9 +272,9 @@ while True:
     pg.draw.rect(screen, palette[p_counter][4], [0,start_y,1200,160])
      
     for i in range(0, 1401, 20):
-        pg.draw.line(screen, palette[p_counter][6], [i, start_y], [i,end_y], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][6], [i, start_y], [i,end_y], line_space[counter%len(line_space)])
     for i in range(start_y, end_y + 1, 20):
-        pg.draw.line(screen, palette[p_counter][6], [0, i], [width+10,i], line_width[counter%len(line_width)])
+        pg.draw.line(screen, palette[p_counter][6], [0, i], [width+10,i], line_space[counter%len(line_space)])
 
     if lines:
         for start_x in range (diplaced_start + counter % 1200,2401,grid_width[grid_counter]):
@@ -281,15 +282,15 @@ while True:
             c = start_y - (2*start_x)
             end_x = (end_y - c)/2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, line_width[grid_counter])
             c = start_y - ((1/3)*start_x)
             end_x = (end_y - c)*3
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, line_width[grid_counter])
             c = start_y + ((1/2)*start_x)
             end_x = (c - end_y)*2
             end_pos = [end_x, end_y]
-            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, 10)
+            pg.draw.line(screen, palette[p_counter][5], start_pos, end_pos, line_width[grid_counter])
                          
     pg.display.flip()
     counter +=1
